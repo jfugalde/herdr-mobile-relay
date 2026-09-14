@@ -72,6 +72,11 @@ describe('exact route identity', () => {
     expect(targetRefMatchesAgent(target!, exactAgent({ server_session_id: 'named' }))).toBe(false);
     expect(targetRefMatchesAgent(target!, exactAgent({ agent_session_id: 'agent-session-2' }))).toBe(false);
   });
+
+  it('does not throw when agent is null/undefined (teardown race)', () => {
+    expect(targetRefForAgent(null)).toBeNull();
+    expect(targetRefForAgent(undefined)).toBeNull();
+  });
 });
 
 describe('relay speech', () => {
